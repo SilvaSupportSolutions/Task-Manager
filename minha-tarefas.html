@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Tarefas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #c8622a;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #c8622a;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .tarefa {
+      padding: 12px;
+      background: #f9f9f9;
+      margin: 8px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .tarefa.done {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .delete {
+      margin-left: auto;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Minha Tarefas</h1>
+
+  <input type="text" id="inputTarefa" placeholder="Digite uma nova tarefa...">
+  <button onclick="adicionar()">Adicionar</button>
+
+  <div id="lista"></div>
+</div>
+
+<script>
+  // Projeto da faculdade - ADS
+  // Chris Silva - Primeiro semestre
+
+  var tarefas = [];
+
+  function carregarTarefas() {
+    if(localStorage.getItem("tarefas")) {
+      tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    }
+  }
+
+  function salvar() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }
+
+  function adicionar() {
+    var input = document.getElementById("inputTarefa");
+
+    if(input.value == "") {
+      alert("Escreve alguma coisa!");
+      return;
+    }
+
+    var novaTarefa = {
+      id: Date.now(),
+      texto: input.value,
+      feita: false
+    };
+
+    tarefas.push(novaTarefa);
+    salvar();
+    input.value = "";
+    mostrarTarefas();
+  }
+
+  function mostrarTarefas() {
+    var lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    for(var i = 0; i < tarefas.length; i++) {
+      var t = tarefas[i];
+
+      var div = document.createElement("div");
+      div.className = "tarefa";
+      if(t.feita) div.classList.add("done");
+
+      div.innerHTML = `
+        <input type="checkbox" ${t.feita ? 'checked' : ''} onchange="marcarFeita(${t.id})">
+        <span>${t.texto}</span>
+        <span class="delete" onclick="deletar(${t.id})">×</span>
+      `;
+
+      lista.appendChild(div);
+    }
+  }
+
+  function marcarFeita(id) {
+    for(var i = 0; i < tarefas.length; i++) {
+      if(tarefas[i].id == id) {
+        tarefas[i].feita = !tarefas[i].feita;
+      }
+    }
+    salvar();
+    mostrarTarefas();
+  }
+
+  function deletar(id) {
+    if(confirm("Apagar essa tarefa?")) {
+      var novasTarefas = [];
+      for(var i = 0; i < tarefas.length; i++) {
+        if(tarefas[i].id !== id) {
+          novasTarefas.push(tarefas[i]);
+        }
+      }
+      tarefas = novasTarefas;
+      salvar();
+      mostrarTarefas();
+    }
+  }
+
+  // Começa o programa
+  carregarTarefas();
+  mostrarTarefas();
+</script>
+
+</body>
+</html>
