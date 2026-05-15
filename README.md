@@ -1,6 +1,6 @@
-# Simple Task Manager
+# Task Manager
 
-A basic task manager built with HTML, CSS and JavaScript.
+Task management application focused on productivity, organization and workflow control.
 
 ## About the project
 
