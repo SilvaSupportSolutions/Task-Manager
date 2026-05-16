@@ -28,6 +28,20 @@ Open the `index.html` file in your browser.
 
 This project is part of my front-end learning path while studying Systems Analysis and Development.
 
+## Screenshots
+
+### Home
+
+![Home](screenshots/1-home.png)
+
+### Pending Tasks
+
+![Pending Tasks](screenshots/2-pending.png)
+
+### Completed Tasks
+
+![Completed Tasks](screenshots/3-completed.png)
+
 ## Author
 
 Christian Silva
