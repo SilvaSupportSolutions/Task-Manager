@@ -32,15 +32,15 @@ This project is part of my front-end learning path while studying Systems Analys
 
 ### Home
 
-![Home](screenshots/1-home.png)
+![Home](Screenshots/1-home.png)
 
 ### Pending Tasks
 
-![Pending Tasks](screenshots/2-pending.png)
+![Pending Tasks](Screenshots/2-pending.png)
 
 ### Completed Tasks
 
-![Completed Tasks](screenshots/3-completed.png)
+![Completed Tasks](Screenshots/3-completed.png)
 
 ## Author
 
