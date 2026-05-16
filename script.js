@@ -101,8 +101,17 @@ function saveTasks() {
 }
 
 function updateCounter() {
+     var completed = 0;
+
+    for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].completed) {
+            completed++;
+        }
+    }
+
     document.getElementById("taskCounter").innerText =
-        tasks.length + " tasks total";
+        "Total: " + tasks.length +
+        " | Completed: " + completed;
 }
 
 function loadTasks() {
