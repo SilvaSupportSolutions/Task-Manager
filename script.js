@@ -29,9 +29,10 @@ function renderTasks(list) {
     updateCounter();
 
     if (list.length == 0) {
-        taskList.innerHTML = "<li>No tasks found.</li>";
-        return;
-    }
+    taskList.innerHTML =
+        "<li class='empty'>No tasks found. Add your first task.</li>";
+    return;
+}
 
     for (var i = 0; i < list.length; i++) {
         var task = list[i];
