@@ -26,6 +26,7 @@ function renderTasks(list) {
     var taskList = document.getElementById("taskList");
 
     taskList.innerHTML = "";
+    updateCounter();
 
     if (list.length == 0) {
         taskList.innerHTML = "<li>No tasks found.</li>";
