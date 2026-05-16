@@ -97,3 +97,11 @@ li {
     color: #555;
     font-size: 14px;
 }
+
+.empty {
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    padding: 20px;
+    border-left: none;
+}
