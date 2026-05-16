@@ -99,6 +99,11 @@ function saveTasks() {
     localStorage.setItem("simpleTasks", JSON.stringify(tasks));
 }
 
+function updateCounter() {
+    document.getElementById("taskCounter").innerText =
+        tasks.length + " tasks total";
+}
+
 function loadTasks() {
     var saved = localStorage.getItem("simpleTasks");
 
